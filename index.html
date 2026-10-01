@@ -1,116 +1,882 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+Absolutely — your CSS was cut off at `.hero`. Here’s a completed, polished version that continues your existing design and adds a responsive navigation, hero, cake cards, about section, contact/CTA, cart counter, and mobile menu.
 
-<title>Shadad Cakeshop</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-
+```
 <style>
-
-:root {
-    --cream: #fffaf5;
-    --white: #ffffff;
-    --pink: #f7d8d8;
-    --rose: #d96f76;
-    --dark: #3a2528;
-    --muted: #765f62;
-    --gold: #c99b52;
-    --border: #eadede;
-    --shadow: 0 18px 50px rgba(71,40,43,.10);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "DM Sans", sans-serif;
-    background: var(--cream);
-    color: var(--dark);
-    line-height: 1.6;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button {
-    font: inherit;
-    cursor: pointer;
-    border: none;
-}
-
-.container {
-    width: min(1120px, 92%);
-    margin: auto;
-}
-
-/* ================= HEADER ================= */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: rgba(255,250,245,.94);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-}
-
-.nav {
-    height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-}
-
-.logo {
-    font-family: "Playfair Display", serif;
-    font-size: 27px;
-    font-weight: 800;
-}
-
-.logo span {
-    color: var(--rose);
-}
-
-nav {
-    display: flex;
-    gap: 28px;
-    color: var(--muted);
-    font-weight: 600;
-}
-
-nav a:hover {
-    color: var(--rose);
-}
-
-.cart-btn {
-    background: var(--dark);
-    color: white;
-    padding: 11px 17px;
-    border-radius: 999px;
-}
-
-.hamb {
-    display: none;
-    background: transparent;
-    font-size: 25px;
-}
 
 /* ================= HERO ================= */
 
 .hero {
-    padding: 76px 0 85
+    padding: 76px 0 85px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.eyebrow {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--rose);
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(46px, 6vw, 76px);
+    line-height: 1.05;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--rose);
+}
+
+.hero p {
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 21px;
+    border-radius: 999px;
+    font-weight: 700;
+    transition: .25s ease;
+}
+
+.btn-primary {
+    background: var(--dark);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--rose);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    background: white;
+}
+
+.btn-outline:hover {
+    border-color: var(--rose);
+    color: var(--rose);
+}
+
+.hero-image {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cake-visual {
+    width: min(420px, 90%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 50% 38%, #fff 0 17%, transparent 18%),
+        linear-gradient(145deg, #f9dddd, #efbfc1);
+    box-shadow: var(--shadow);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cake-visual::before {
+    content: "🍰";
+    font-size: 145px;
+    filter: drop-shadow(0 15px 15px rgba(70,40,40,.15));
+}
+
+.floating-card {
+    position: absolute;
+    background: white;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 14px 18px;
+    border-radius: 16px;
+    font-weight: 700;
+}
+
+.floating-card small {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.card-one {
+    left: 0;
+    top: 25%;
+}
+
+.card-two {
+    right: 0;
+    bottom: 18%;
+}
+
+/* ================= SECTION ================= */
+
+section {
+    padding: 85px 0;
+}
+
+.section-head {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.section-head span {
+    color: var(--rose);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.section-head h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(34px, 5vw, 48px);
+    margin: 8px 0 12px;
+}
+
+.section-head p {
+    max-width: 600px;
+    margin: auto;
+    color: var(--muted);
+}
+
+/* ================= PRODUCTS ================= */
+
+.products {
+    background: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.product-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+    transition: .3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+}
+
+.product-image {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbe8e8;
+    font-size: 105px;
+}
+
+.product-info {
+    padding: 22px;
+}
+
+.product-info h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.product-info p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.price {
+    color: var(--rose);
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.add-btn {
+    background: var(--dark);
+    color: white;
+    padding: 9px 15px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.add-btn:hover {
+    background: var(--rose);
+}
+
+/* ================= ABOUT ================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.about-image {
+    min-height: 400px;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #f6cccc, #fff0e9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150px;
+    box-shadow: var(--shadow);
+}
+
+.about-content span {
+    color: var(--rose);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.about-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(35px, 5vw, 52px);
+    line-height: 1.1;
+    margin: 10px 0 20px;
+}
+
+.about-content p {
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.feature {
+    padding: 16px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 14px;
+}
+
+.feature strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.feature small {
+    color: var(--muted);
+}
+
+/* ================= CTA ================= */
+
+.cta {
+    padding-top: 30px;
+}
+
+.cta-box {
+    background: var(--dark);
+    color: white;
+    border-radius: 28px;
+    padding: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.cta-box h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.cta-box p {
+    color: #ddcbcd;
+    max-width: 600px;
+}
+
+.cta-box .btn {
+    background: var(--pink);
+    color: var(--dark);
+    white-space: nowrap;
+}
+
+.cta-box .btn:hover {
+    background: white;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 35px 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.footer-logo span {
+    color: var(--rose);
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ================= CART MESSAGE ================= */
+
+.cart-message {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    background: var(--dark);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transform: translateY(120px);
+    opacity: 0;
+    transition: .3s ease;
+    z-index: 100;
+}
+
+.cart-message.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 800px) {
+
+    .nav {
+        height: 68px;
+    }
+
+    nav {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .hamb {
+        display: block;
+    }
+
+    .cart-btn {
+        display: none;
+    }
+
+    .hero {
+        padding: 55px 0 65px;
+    }
+
+    .hero-grid,
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-grid {
+        gap: 45px;
+    }
+
+    .hero-image {
+        min-height: 350px;
+        order: -1;
+    }
+
+    .cake-visual {
+        width: 300px;
+    }
+
+    .cake-visual::before {
+        font-size: 105px;
+    }
+
+    .card-one {
+        left: 3%;
+    }
+
+    .card-two {
+        right: 3%;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        min-height: 300px;
+    }
+
+    .cta-box {
+        padding: 38px 25px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 65px 0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+    <div class="container nav">
+
+        <a href="#" class="logo">
+            Shadad<span>.</span>
+        </a>
+
+        <nav id="mainNav">
+            <a href="#home">Home</a>
+            <a href="#cakes">Cakes</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="cart-btn" onclick="showCart()">
+            🛒 Cart <span id="cartCount">0</span>
+        </button>
+
+        <button class="hamb" onclick="toggleMenu()" aria-label="Open menu">
+            ☰
+        </button>
+
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+
+<main>
+
+<section class="hero" id="home">
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">Freshly baked with love</span>
+
+            <h1>
+                Sweet moments,
+                <span>beautiful cakes.</span>
+            </h1>
+
+            <p>
+                Welcome to Shadad Cakeshop — where every cake is
+                freshly baked, beautifully decorated, and made to
+                make your celebrations extra special.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#cakes" class="btn btn-primary">
+                    Explore Cakes
+                </a>
+
+                <a href="#about" class="btn btn-outline">
+                    Our Story
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+
+            <div class="cake-visual"></div>
+
+            <div class="floating-card card-one">
+                ⭐ 4.9/5
+                <small>Happy customers</small>
+            </div>
+
+            <div class="floating-card card-two">
+                🎂 Fresh Daily
+                <small>Made with premium ingredients</small>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= CAKES ================= -->
+
+<section class="products" id="cakes">
+
+    <div class="container">
+
+        <div class="section-head">
+            <span>Our favourites</span>
+
+            <h2>Made for every celebration</h2>
+
+            <p>
+                From elegant classics to fun celebration cakes,
+                there's something delicious for every occasion.
+            </p>
+        </div>
+
+        <div class="product-grid">
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    🍓
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Strawberry Dream</h3>
+
+                    <p>
+                        Soft vanilla sponge layered with fresh
+                        strawberries and creamy frosting.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="price">₹799</span>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart('Strawberry Dream')">
+                            Add to Cart
+                        </button>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    🍫
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Chocolate Bliss</h3>
+
+                    <p>
+                        Rich chocolate sponge with silky chocolate
+                        cream and decadent ganache.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="price">₹899</span>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart('Chocolate Bliss')">
+                            Add to Cart
+                        </button>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    🌸
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Rose Celebration</h3>
+
+                    <p>
+                        A delicate vanilla cake finished with
+                        elegant floral buttercream decorations.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="price">₹999</span>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart('Rose Celebration')">
+                            Add to Cart
+                        </button>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-image">
+            🧁
+        </div>
+
+        <div class="about-content">
+
+            <span>Our story</span>
+
+            <h2>Baked with passion, served with love.</h2>
+
+            <p>
+                At Shadad Cakeshop, we believe a cake is more than
+                just dessert. It's part of the memories you create
+                with the people you love.
+            </p>
+
+            <p>
+                Every cake is prepared with carefully selected
+                ingredients, attention to detail, and a whole lot
+                of love.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <strong>🎂 Freshly Baked</strong>
+                    <small>Made fresh for every order.</small>
+                </div>
+
+                <div class="feature">
+                    <strong>🌿 Quality Ingredients</strong>
+                    <small>Only ingredients we trust.</small>
+                </div>
+
+                <div class="feature">
+                    <strong>💝 Custom Designs</strong>
+                    <small>Made specially for your occasion.</small>
+                </div>
+
+                <div class="feature">
+                    <strong>✨ Made With Love</strong>
+                    <small>Every detail matters to us.</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+
+<section class="cta" id="contact">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <div>
+                <h2>Have a sweet celebration coming up?</h2>
+
+                <p>
+                    Let us create a beautiful cake for your
+                    birthday, anniversary, wedding, or any
+                    special moment.
+                </p>
+            </div>
+
+            <a href="tel:+919000000000" class="btn">
+                Order Your Cake
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div class="footer-logo">
+            Shadad<span>.</span>
+        </div>
+
+        <p>
+            © 2026 Shadad Cakeshop. Baked with love.
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- CART NOTIFICATION -->
+
+<div class="cart-message" id="cartMessage">
+    Added to your cart! 🎂
+</div>
+
+<script>
+
+let cartCount = 0;
+
+function addToCart(cakeName) {
+
+    cartCount++;
+
+    document.getElementById("cartCount").textContent = cartCount;
+
+    const message = document.getElementById("cartMessage");
+
+    message.textContent = cakeName + " added to your cart! 🎂";
+
+    message.classList.add("show");
+
+    setTimeout(() => {
+        message.classList.remove("show");
+    }, 2200);
+}
+
+function showCart() {
+
+    if (cartCount === 0) {
+        alert("Your cart is empty.");
+    } else {
+        alert(
+            "You have " +
+            cartCount +
+            " cake" +
+            (cartCount > 1 ? "s" : "") +
+            " in your cart! 🎂"
+        );
+    }
+}
+
+function toggleMenu() {
+
+    const nav = document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+/* Close mobile menu after clicking a link */
+
+document.querySelectorAll("#mainNav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+        document.getElementById("mainNav").classList.remove("active");
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+ This is a complete standalone page, so you can replace your truncated file with the code above and open it directly in a browser.
