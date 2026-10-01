@@ -1,7 +1,114 @@
-Absolutely — your CSS was cut off at `.hero`. Here’s a completed, polished version that continues your existing design and adds a responsive navigation, hero, cake cards, about section, contact/CTA, cart counter, and mobile menu.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
+<title>Shadad Cakeshop</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
+:root {
+    --cream: #fffaf5;
+    --white: #ffffff;
+    --pink: #f7d8d8;
+    --rose: #d96f76;
+    --dark: #3a2528;
+    --muted: #765f62;
+    --gold: #c99b52;
+    --border: #eadede;
+    --shadow: 0 18px 50px rgba(71,40,43,.10);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: auto;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255,250,245,.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--rose);
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--rose);
+}
+
+.cart-btn {
+    background: var(--dark);
+    color: white;
+    padding: 11px 17px;
+    border-radius: 999px;
+}
+
+.hamb {
+    display: none;
+    background: transparent;
+    font-size: 25px;
+}
 
 /* ================= HERO ================= */
 
@@ -11,502 +118,470 @@ Absolutely — your CSS was cut off at `.hero`. Here’s a completed, polished v
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1.05fr .95fr;
+    grid-template-columns: 1.02fr .98fr;
     align-items: center;
-    gap: 60px;
+    gap: 50px;
 }
 
 .eyebrow {
     display: inline-block;
     background: var(--pink);
-    color: var(--rose);
-    padding: 7px 14px;
+    padding: 7px 13px;
     border-radius: 999px;
+    color: #77484c;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: .5px;
     margin-bottom: 18px;
 }
 
-.hero h1 {
+h1,
+h2 {
     font-family: "Playfair Display", serif;
-    font-size: clamp(46px, 6vw, 76px);
-    line-height: 1.05;
-    margin-bottom: 22px;
+    line-height: 1.08;
 }
 
-.hero h1 span {
+h1 {
+    font-size: clamp(46px, 6vw, 76px);
+}
+
+h1 span {
     color: var(--rose);
 }
 
 .hero p {
-    max-width: 560px;
     color: var(--muted);
-    font-size: 17px;
-    margin-bottom: 30px;
+    font-size: 18px;
+    max-width: 560px;
+    margin: 22px 0 30px;
 }
 
-.hero-buttons {
+.actions {
     display: flex;
-    align-items: center;
-    gap: 14px;
+    gap: 13px;
     flex-wrap: wrap;
 }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 21px;
+.primary,
+.secondary {
+    padding: 14px 22px;
     border-radius: 999px;
     font-weight: 700;
-    transition: .25s ease;
 }
 
-.btn-primary {
-    background: var(--dark);
+.primary {
+    background: var(--rose);
     color: white;
 }
 
-.btn-primary:hover {
-    background: var(--rose);
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    border: 1px solid var(--border);
+.secondary {
     background: white;
+    border: 1px solid var(--border);
 }
 
-.btn-outline:hover {
-    border-color: var(--rose);
-    color: var(--rose);
-}
-
-.hero-image {
+.hero-art {
+    min-height: 470px;
+    background: linear-gradient(145deg,#f4d3d1,#fff0e9);
+    border-radius: 45% 45% 20px 20px;
     position: relative;
-    min-height: 480px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cake-visual {
-    width: min(420px, 90%);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at 50% 38%, #fff 0 17%, transparent 18%),
-        linear-gradient(145deg, #f9dddd, #efbfc1);
+    display: grid;
+    place-items: center;
     box-shadow: var(--shadow);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.cake-visual::before {
-    content: "🍰";
-    font-size: 145px;
-    filter: drop-shadow(0 15px 15px rgba(70,40,40,.15));
+.cake-emoji {
+    font-size: 175px;
 }
 
-.floating-card {
+.float {
     position: absolute;
     background: white;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    padding: 14px 18px;
+    padding: 12px 15px;
     border-radius: 16px;
+    box-shadow: var(--shadow);
     font-weight: 700;
+    font-size: 13px;
 }
 
-.floating-card small {
-    display: block;
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 500;
+.f1 {
+    top: 35px;
+    left: 25px;
 }
 
-.card-one {
-    left: 0;
-    top: 25%;
+.f2 {
+    right: 22px;
+    top: 110px;
 }
 
-.card-two {
-    right: 0;
-    bottom: 18%;
+.f3 {
+    bottom: 35px;
+    left: 55px;
 }
 
-/* ================= SECTION ================= */
+/* ================= SECTIONS ================= */
 
 section {
-    padding: 85px 0;
+    padding: 75px 0;
 }
 
 .section-head {
     text-align: center;
-    margin-bottom: 42px;
-}
-
-.section-head span {
-    color: var(--rose);
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    margin-bottom: 35px;
 }
 
 .section-head h2 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(34px, 5vw, 48px);
-    margin: 8px 0 12px;
+    font-size: 43px;
 }
 
 .section-head p {
-    max-width: 600px;
-    margin: auto;
     color: var(--muted);
+    margin-top: 9px;
+}
+
+/* ================= FILTERS ================= */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.filter {
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 999px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.filter.active,
+.filter:hover {
+    background: var(--dark);
+    color: white;
 }
 
 /* ================= PRODUCTS ================= */
 
 .products {
-    background: white;
-}
-
-.product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 22px;
 }
 
-.product-card {
-    background: var(--cream);
+.card {
+    background: var(--white);
     border: 1px solid var(--border);
     border-radius: 22px;
     overflow: hidden;
-    transition: .3s ease;
+    transition: .25s;
 }
 
-.product-card:hover {
-    transform: translateY(-6px);
+.card:hover {
+    transform: translateY(-5px);
     box-shadow: var(--shadow);
 }
 
-.product-image {
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fbe8e8;
-    font-size: 105px;
+.pic {
+    height: 205px;
+    display: grid;
+    place-items: center;
+    font-size: 92px;
+    background: linear-gradient(135deg,#fff0ec,#f8dede);
 }
 
-.product-info {
-    padding: 22px;
+.info {
+    padding: 19px;
 }
 
-.product-info h3 {
+.tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rose);
+    font-weight: 800;
+}
+
+.info h3 {
     font-family: "Playfair Display", serif;
-    font-size: 24px;
-    margin-bottom: 5px;
+    font-size: 23px;
+    margin: 4px 0;
 }
 
-.product-info p {
-    color: var(--muted);
+.info p {
     font-size: 14px;
-    margin-bottom: 16px;
+    color: var(--muted);
+    min-height: 45px;
 }
 
-.product-bottom {
+.bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    margin-top: 14px;
 }
 
 .price {
-    color: var(--rose);
     font-weight: 800;
     font-size: 18px;
 }
 
-.add-btn {
+.add {
     background: var(--dark);
     color: white;
-    padding: 9px 15px;
-    border-radius: 999px;
-    font-size: 13px;
+    padding: 9px 14px;
+    border-radius: 10px;
     font-weight: 700;
-    transition: .2s;
-}
-
-.add-btn:hover {
-    background: var(--rose);
 }
 
 /* ================= ABOUT ================= */
 
+.about {
+    background: var(--dark);
+    color: white;
+}
+
 .about-grid {
     display: grid;
-    grid-template-columns: .9fr 1.1fr;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 60px;
     align-items: center;
-    gap: 70px;
 }
 
-.about-image {
-    min-height: 400px;
+.about-art {
+    background: #f3d0cf;
     border-radius: 28px;
-    background: linear-gradient(145deg, #f6cccc, #fff0e9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 150px;
-    box-shadow: var(--shadow);
+    min-height: 320px;
+    display: grid;
+    place-items: center;
+    font-size: 130px;
 }
 
-.about-content span {
-    color: var(--rose);
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+.about h2 {
+    font-size: 45px;
 }
 
-.about-content h2 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(35px, 5vw, 52px);
-    line-height: 1.1;
-    margin: 10px 0 20px;
-}
-
-.about-content p {
-    color: var(--muted);
-    margin-bottom: 16px;
+.about p {
+    color: #eadcdd;
+    margin: 18px 0;
 }
 
 .features {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 14px;
     margin-top: 25px;
 }
 
 .feature {
-    padding: 16px;
-    border: 1px solid var(--border);
-    background: white;
-    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.15);
+    padding: 15px;
+    border-radius: 15px;
 }
 
-.feature strong {
+.feature b {
     display: block;
-    margin-bottom: 3px;
 }
 
 .feature small {
-    color: var(--muted);
+    color: #d8c7c8;
 }
 
-/* ================= CTA ================= */
+/* ================= CONTACT ================= */
 
-.cta {
-    padding-top: 30px;
-}
-
-.cta-box {
-    background: var(--dark);
-    color: white;
-    border-radius: 28px;
-    padding: 55px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-}
-
-.cta-box h2 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(32px, 5vw, 48px);
-    line-height: 1.1;
-    margin-bottom: 10px;
-}
-
-.cta-box p {
-    color: #ddcbcd;
-    max-width: 600px;
-}
-
-.cta-box .btn {
-    background: var(--pink);
-    color: var(--dark);
-    white-space: nowrap;
-}
-
-.cta-box .btn:hover {
+.contact-box {
     background: white;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    box-shadow: var(--shadow);
+}
+
+.contact-box h2 {
+    font-size: 40px;
+}
+
+.contact-box p {
+    color: var(--muted);
+    margin: 12px 0 20px;
+}
+
+.contact-info div {
+    margin: 12px 0;
+}
+
+.contact-info strong {
+    display: block;
 }
 
 /* ================= FOOTER ================= */
 
 footer {
-    padding: 35px 0;
+    padding: 25px 0;
     border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 14px;
 }
 
-.footer-content {
+/* ================= CART ================= */
+
+.cart-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: min(390px,100%);
+    height: 100vh;
+    background: white;
+    z-index: 50;
+    transform: translateX(100%);
+    transition: .3s;
+    box-shadow: -20px 0 50px rgba(0,0,0,.15);
+    padding: 25px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    flex-direction: column;
 }
 
-.footer-logo {
+.cart-panel.open {
+    transform: translateX(0);
+}
+
+.cart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px;
+}
+
+.cart-head h3 {
     font-family: "Playfair Display", serif;
-    font-size: 22px;
+    font-size: 28px;
+}
+
+.close {
+    background: #f5eded;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+.cart-items {
+    flex: 1;
+    overflow: auto;
+    padding: 15px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 13px 0;
+    border-bottom: 1px solid #f0e7e7;
+}
+
+.cart-item small {
+    color: var(--muted);
+}
+
+.remove {
+    color: var(--rose);
+    font-size: 12px;
+    background: none;
+}
+
+.total {
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    font-weight: 800;
+    font-size: 19px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout {
+    margin-top: 13px;
+    width: 100%;
+    padding: 14px;
+    background: #25a244;
+    color: white;
+    border-radius: 12px;
     font-weight: 800;
 }
 
-.footer-logo span {
-    color: var(--rose);
-}
-
-footer p {
+.empty {
+    text-align: center;
     color: var(--muted);
-    font-size: 13px;
+    padding: 50px 0;
 }
 
-/* ================= CART MESSAGE ================= */
-
-.cart-message {
+.overlay {
+    display: none;
     position: fixed;
-    right: 22px;
-    bottom: 22px;
-    background: var(--dark);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    transform: translateY(120px);
-    opacity: 0;
-    transition: .3s ease;
-    z-index: 100;
+    inset: 0;
+    background: rgba(35,20,22,.4);
+    z-index: 40;
 }
 
-.cart-message.show {
-    transform: translateY(0);
-    opacity: 1;
+.overlay.show {
+    display: block;
 }
 
 /* ================= MOBILE ================= */
 
-@media (max-width: 800px) {
-
-    .nav {
-        height: 68px;
-    }
+@media(max-width:800px) {
 
     nav {
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        background: var(--cream);
-        border-bottom: 1px solid var(--border);
-        padding: 20px;
         display: none;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    nav.active {
-        display: flex;
     }
 
     .hamb {
         display: block;
     }
 
-    .cart-btn {
-        display: none;
+    .hero-grid,
+    .about-grid,
+    .contact-box {
+        grid-template-columns: 1fr;
     }
 
     .hero {
-        padding: 55px 0 65px;
+        padding-top: 45px;
     }
 
-    .hero-grid,
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-grid {
-        gap: 45px;
-    }
-
-    .hero-image {
+    .hero-art {
         min-height: 350px;
-        order: -1;
     }
 
-    .cake-visual {
-        width: 300px;
-    }
-
-    .cake-visual::before {
-        font-size: 105px;
-    }
-
-    .card-one {
-        left: 3%;
-    }
-
-    .card-two {
-        right: 3%;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-image {
-        min-height: 300px;
-    }
-
-    .cta-box {
-        padding: 38px 25px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-@media (max-width: 450px) {
-
-    .hero h1 {
-        font-size: 43px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn {
-        width: 100%;
+    .products {
+        grid-template-columns: repeat(2,1fr);
     }
 
     .features {
         grid-template-columns: 1fr;
     }
+}
 
-    section {
-        padding: 65px 0;
+@media(max-width:540px) {
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-art {
+        min-height: 290px;
+    }
+
+    .cake-emoji {
+        font-size: 120px;
+    }
+
+    .section-head h2 {
+        font-size: 36px;
     }
 }
 
@@ -518,365 +593,699 @@ footer p {
 <!-- ================= HEADER ================= -->
 
 <header>
-    <div class="container nav">
 
-        <a href="#" class="logo">
-            Shadad<span>.</span>
-        </a>
+<div class="container nav">
 
-        <nav id="mainNav">
-            <a href="#home">Home</a>
-            <a href="#cakes">Cakes</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+<a class="logo" href="#">
+    Shadad <span>Cakeshop</span> 🍰
+</a>
 
-        <button class="cart-btn" onclick="showCart()">
-            🛒 Cart <span id="cartCount">0</span>
-        </button>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#cakes">Cakes</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-        <button class="hamb" onclick="toggleMenu()" aria-label="Open menu">
-            ☰
-        </button>
+<button class="cart-btn" onclick="toggleCart()">
+    🛒 Cart <b id="count">0</b>
+</button>
 
-    </div>
+<button class="hamb">
+    ☰
+</button>
+
+</div>
+
 </header>
+
 
 <!-- ================= HERO ================= -->
 
 <main>
 
 <section class="hero" id="home">
-    <div class="container hero-grid">
 
-        <div class="hero-content">
+<div class="container hero-grid">
 
-            <span class="eyebrow">Freshly baked with love</span>
+<div>
 
-            <h1>
-                Sweet moments,
-                <span>beautiful cakes.</span>
-            </h1>
+<span class="eyebrow">
+    BAKED FRESH • MADE WITH LOVE
+</span>
 
-            <p>
-                Welcome to Shadad Cakeshop — where every cake is
-                freshly baked, beautifully decorated, and made to
-                make your celebrations extra special.
-            </p>
+<h1>
+    Sweet moments start with
+    <span>Shadad.</span>
+</h1>
 
-            <div class="hero-buttons">
-                <a href="#cakes" class="btn btn-primary">
-                    Explore Cakes
-                </a>
+<p>
+    Beautiful cakes, dreamy desserts and little bites
+    of happiness, freshly prepared for birthdays,
+    celebrations and every “just because” day.
+</p>
 
-                <a href="#about" class="btn btn-outline">
-                    Our Story
-                </a>
-            </div>
+<div class="actions">
 
-        </div>
+<a class="primary" href="#cakes">
+    Explore Cakes →
+</a>
 
-        <div class="hero-image">
+<a class="secondary" href="#contact">
+    Order a Custom Cake
+</a>
 
-            <div class="cake-visual"></div>
+</div>
 
-            <div class="floating-card card-one">
-                ⭐ 4.9/5
-                <small>Happy customers</small>
-            </div>
+</div>
 
-            <div class="floating-card card-two">
-                🎂 Fresh Daily
-                <small>Made with premium ingredients</small>
-            </div>
 
-        </div>
+<div class="hero-art">
 
-    </div>
+<div class="cake-emoji">
+    🎂
+</div>
+
+<div class="float f1">
+    ✨ Freshly baked
+</div>
+
+<div class="float f2">
+    ❤️ Customer favourite
+</div>
+
+<div class="float f3">
+    🍓 Premium ingredients
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <!-- ================= CAKES ================= -->
 
-<section class="products" id="cakes">
+<section id="cakes">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-head">
-            <span>Our favourites</span>
+<div class="section-head">
 
-            <h2>Made for every celebration</h2>
+<h2>
+    Our sweet collection
+</h2>
 
-            <p>
-                From elegant classics to fun celebration cakes,
-                there's something delicious for every occasion.
-            </p>
-        </div>
+<p>
+    Pick a favourite or build your own celebration.
+</p>
 
-        <div class="product-grid">
+</div>
 
-            <article class="product-card">
 
-                <div class="product-image">
-                    🍓
-                </div>
+<div class="filters">
 
-                <div class="product-info">
+<button class="filter active"
+onclick="filterProducts('all',this)">
+All
+</button>
 
-                    <h3>Strawberry Dream</h3>
+<button class="filter"
+onclick="filterProducts('cake',this)">
+Cakes
+</button>
 
-                    <p>
-                        Soft vanilla sponge layered with fresh
-                        strawberries and creamy frosting.
-                    </p>
+<button class="filter"
+onclick="filterProducts('cupcake',this)">
+Cupcakes
+</button>
 
-                    <div class="product-bottom">
-                        <span class="price">₹799</span>
+<button class="filter"
+onclick="filterProducts('dessert',this)">
+Desserts
+</button>
 
-                        <button
-                            class="add-btn"
-                            onclick="addToCart('Strawberry Dream')">
-                            Add to Cart
-                        </button>
-                    </div>
+</div>
 
-                </div>
 
-            </article>
+<div class="products" id="products"></div>
 
-            <article class="product-card">
-
-                <div class="product-image">
-                    🍫
-                </div>
-
-                <div class="product-info">
-
-                    <h3>Chocolate Bliss</h3>
-
-                    <p>
-                        Rich chocolate sponge with silky chocolate
-                        cream and decadent ganache.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹899</span>
-
-                        <button
-                            class="add-btn"
-                            onclick="addToCart('Chocolate Bliss')">
-                            Add to Cart
-                        </button>
-                    </div>
-
-                </div>
-
-            </article>
-
-            <article class="product-card">
-
-                <div class="product-image">
-                    🌸
-                </div>
-
-                <div class="product-info">
-
-                    <h3>Rose Celebration</h3>
-
-                    <p>
-                        A delicate vanilla cake finished with
-                        elegant floral buttercream decorations.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹999</span>
-
-                        <button
-                            class="add-btn"
-                            onclick="addToCart('Rose Celebration')">
-                            Add to Cart
-                        </button>
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
+
 
 <!-- ================= ABOUT ================= -->
 
-<section id="about">
+<section class="about" id="about">
 
-    <div class="container about-grid">
+<div class="container about-grid">
 
-        <div class="about-image">
-            🧁
-        </div>
+<div class="about-art">
+    🧁
+</div>
 
-        <div class="about-content">
+<div>
 
-            <span>Our story</span>
+<span class="eyebrow">
+    OUR STORY
+</span>
 
-            <h2>Baked with passion, served with love.</h2>
+<h2>
+    Small bakery energy.
+    Big celebration flavour.
+</h2>
 
-            <p>
-                At Shadad Cakeshop, we believe a cake is more than
-                just dessert. It's part of the memories you create
-                with the people you love.
-            </p>
+<p>
+    At Shadad Cakeshop, every cake is made to feel
+    personal. From soft sponge and creamy frosting
+    to the final little decoration, we focus on
+    freshness, flavour and a finish worth photographing.
+</p>
 
-            <p>
-                Every cake is prepared with carefully selected
-                ingredients, attention to detail, and a whole lot
-                of love.
-            </p>
 
-            <div class="features">
+<div class="features">
 
-                <div class="feature">
-                    <strong>🎂 Freshly Baked</strong>
-                    <small>Made fresh for every order.</small>
-                </div>
+<div class="feature">
+    🌿
+    <b>Fresh ingredients</b>
+    <small>Made fresh for your order.</small>
+</div>
 
-                <div class="feature">
-                    <strong>🌿 Quality Ingredients</strong>
-                    <small>Only ingredients we trust.</small>
-                </div>
+<div class="feature">
+    🎨
+    <b>Custom designs</b>
+    <small>Your idea, our frosting.</small>
+</div>
 
-                <div class="feature">
-                    <strong>💝 Custom Designs</strong>
-                    <small>Made specially for your occasion.</small>
-                </div>
+<div class="feature">
+    🚚
+    <b>Easy ordering</b>
+    <small>Message us and we'll help.</small>
+</div>
 
-                <div class="feature">
-                    <strong>✨ Made With Love</strong>
-                    <small>Every detail matters to us.</small>
-                </div>
+</div>
 
-            </div>
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-<!-- ================= CTA ================= -->
 
-<section class="cta" id="contact">
+<!-- ================= CONTACT ================= -->
 
-    <div class="container">
+<section id="contact">
 
-        <div class="cta-box">
+<div class="container">
 
-            <div>
-                <h2>Have a sweet celebration coming up?</h2>
+<div class="contact-box">
 
-                <p>
-                    Let us create a beautiful cake for your
-                    birthday, anniversary, wedding, or any
-                    special moment.
-                </p>
-            </div>
+<div>
 
-            <a href="tel:+919000000000" class="btn">
-                Order Your Cake
-            </a>
+<span class="eyebrow">
+    LET'S BAKE
+</span>
 
-        </div>
+<h2>
+    Have a celebration coming up?
+</h2>
 
-    </div>
+<p>
+    Tell us what you're dreaming of.
+    We'll help you choose the flavour,
+    size and design.
+</p>
+
+<a class="primary"
+href="https://wa.me/919999999999"
+target="_blank">
+
+Order on WhatsApp
+
+</a>
+
+</div>
+
+
+<div class="contact-info">
+
+<div>
+    📍
+    <strong>Visit us</strong>
+    Shadad Cakeshop, Kerala, India
+</div>
+
+<div>
+    📞
+    <strong>Call / WhatsApp</strong>
+    +91 99999 99999
+</div>
+
+<div>
+    🕒
+    <strong>Opening hours</strong>
+    10:00 AM – 9:00 PM
+</div>
+
+<div>
+    📸
+    <strong>Instagram</strong>
+    @shadadcakeshop
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 </main>
 
+
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
-    <div class="container footer-content">
+<div class="container">
 
-        <div class="footer-logo">
-            Shadad<span>.</span>
-        </div>
+© 2026 Shadad Cakeshop.
+Baked with love. 🍰
 
-        <p>
-            © 2026 Shadad Cakeshop. Baked with love.
-        </p>
-
-    </div>
+</div>
 
 </footer>
 
-<!-- CART NOTIFICATION -->
 
-<div class="cart-message" id="cartMessage">
-    Added to your cart! 🎂
+<!-- ================= CART ================= -->
+
+<div
+class="overlay"
+id="overlay"
+onclick="toggleCart()">
 </div>
+
+
+<aside
+class="cart-panel"
+id="cart">
+
+<div class="cart-head">
+
+<h3>
+    Your order
+</h3>
+
+<button
+class="close"
+onclick="toggleCart()">
+×
+</button>
+
+</div>
+
+
+<div
+class="cart-items"
+id="cartItems">
+</div>
+
+
+<div class="total">
+
+<span>
+    Total
+</span>
+
+<span>
+    ₹<span id="total">0</span>
+</span>
+
+</div>
+
+
+<button
+class="checkout"
+onclick="checkout()">
+
+Order via WhatsApp
+
+</button>
+
+</aside>
+
 
 <script>
 
-let cartCount = 0;
+/* ================= PRODUCTS ================= */
 
-function addToCart(cakeName) {
+const products = [
 
-    cartCount++;
+{
+    id: 1,
+    name: "Classic Chocolate",
+    cat: "cake",
+    price: 650,
+    emoji: "🍫",
+    desc: "Rich chocolate sponge with silky chocolate frosting."
+},
 
-    document.getElementById("cartCount").textContent = cartCount;
+{
+    id: 2,
+    name: "Strawberry Dream",
+    cat: "cake",
+    price: 750,
+    emoji: "🍓",
+    desc: "Vanilla sponge, strawberry cream and fresh berries."
+},
 
-    const message = document.getElementById("cartMessage");
+{
+    id: 3,
+    name: "Red Velvet",
+    cat: "cake",
+    price: 800,
+    emoji: "❤️",
+    desc: "Velvety cocoa sponge with smooth cream cheese frosting."
+},
 
-    message.textContent = cakeName + " added to your cart! 🎂";
+{
+    id: 4,
+    name: "Vanilla Cupcake Box",
+    cat: "cupcake",
+    price: 360,
+    emoji: "🧁",
+    desc: "Six fluffy vanilla cupcakes with buttercream swirls."
+},
 
-    message.classList.add("show");
+{
+    id: 5,
+    name: "Chocolate Cupcakes",
+    cat: "cupcake",
+    price: 420,
+    emoji: "🧁",
+    desc: "Six chocolate cupcakes topped with chocolate cream."
+},
 
-    setTimeout(() => {
-        message.classList.remove("show");
-    }, 2200);
+{
+    id: 6,
+    name: "Brownie Delight",
+    cat: "dessert",
+    price: 280,
+    emoji: "🍪",
+    desc: "Fudgy chocolate brownies with a rich, gooey centre."
 }
 
-function showCart() {
+];
 
-    if (cartCount === 0) {
-        alert("Your cart is empty.");
+
+let cart = [];
+
+
+/* ================= DISPLAY PRODUCTS ================= */
+
+function renderProducts(list = products) {
+
+    document.getElementById("products").innerHTML =
+
+    list.map(p => `
+
+        <article class="card">
+
+            <div class="pic">
+                ${p.emoji}
+            </div>
+
+            <div class="info">
+
+                <span class="tag">
+                    ${p.cat}
+                </span>
+
+                <h3>
+                    ${p.name}
+                </h3>
+
+                <p>
+                    ${p.desc}
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">
+                        ₹${p.price}
+                    </span>
+
+                    <button
+                    class="add"
+                    onclick="addToCart(${p.id})">
+
+                        + Add
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `).join("");
+
+}
+
+
+/* ================= FILTER ================= */
+
+function filterProducts(category, button) {
+
+    document
+    .querySelectorAll(".filter")
+    .forEach(x => x.classList.remove("active"));
+
+    button.classList.add("active");
+
+    if (category === "all") {
+
+        renderProducts(products);
+
     } else {
-        alert(
-            "You have " +
-            cartCount +
-            " cake" +
-            (cartCount > 1 ? "s" : "") +
-            " in your cart! 🎂"
+
+        renderProducts(
+            products.filter(
+                p => p.cat === category
+            )
         );
+
     }
-}
-
-function toggleMenu() {
-
-    const nav = document.getElementById("mainNav");
-
-    nav.classList.toggle("active");
 
 }
 
-/* Close mobile menu after clicking a link */
 
-document.querySelectorAll("#mainNav a").forEach(link => {
+/* ================= ADD CART ================= */
 
-    link.addEventListener("click", () => {
-        document.getElementById("mainNav").classList.remove("active");
-    });
+function addToCart(id) {
 
-});
+    const item =
+        cart.find(x => x.id === id);
+
+    if (item) {
+
+        item.qty++;
+
+    } else {
+
+        cart.push({
+            ...products.find(p => p.id === id),
+            qty: 1
+        });
+
+    }
+
+    updateCart();
+
+    toggleCart(true);
+}
+
+
+/* ================= UPDATE CART ================= */
+
+function updateCart() {
+
+    const count =
+        cart.reduce(
+            (total, item) =>
+            total + item.qty,
+            0
+        );
+
+    document.getElementById("count")
+        .textContent = count;
+
+
+    if (!cart.length) {
+
+        document.getElementById("cartItems")
+            .innerHTML =
+            `<div class="empty">
+                Your cart is empty 🧁
+            </div>`;
+
+    } else {
+
+        document.getElementById("cartItems")
+        .innerHTML =
+
+        cart.map(item => `
+
+            <div class="cart-item">
+
+                <div>
+
+                    <b>
+                        ${item.name}
+                    </b>
+
+                    <br>
+
+                    <small>
+                        ₹${item.price}
+                        ×
+                        ${item.qty}
+                    </small>
+
+                </div>
+
+                <button
+                class="remove"
+                onclick="removeItem(${item.id})">
+
+                    Remove
+
+                </button>
+
+            </div>
+
+        `).join("");
+
+    }
+
+
+    const total =
+        cart.reduce(
+            (total,item) =>
+            total + item.price * item.qty,
+            0
+        );
+
+    document.getElementById("total")
+        .textContent = total;
+
+}
+
+
+/* ================= REMOVE ================= */
+
+function removeItem(id) {
+
+    cart =
+        cart.filter(
+            item => item.id !== id
+        );
+
+    updateCart();
+
+}
+
+
+/* ================= CART PANEL ================= */
+
+function toggleCart(force) {
+
+    const panel =
+        document.getElementById("cart");
+
+    const overlay =
+        document.getElementById("overlay");
+
+    let open;
+
+    if (force === true) {
+
+        open = true;
+
+    } else {
+
+        open =
+            !panel.classList.contains("open");
+
+    }
+
+    panel.classList.toggle(
+        "open",
+        open
+    );
+
+    overlay.classList.toggle(
+        "show",
+        open
+    );
+
+}
+
+
+/* ================= WHATSAPP ================= */
+
+function checkout() {
+
+    if (!cart.length) {
+
+        alert(
+            "Add a cake to your cart first!"
+        );
+
+        return;
+
+    }
+
+
+    const message =
+        "Hello Shadad Cakeshop! " +
+        "I would like to order:%0A" +
+
+        cart.map(item =>
+
+            `${item.name} x${item.qty} - ₹${item.price * item.qty}`
+
+        ).join("%0A") +
+
+        "%0A%0ATotal: ₹" +
+
+        cart.reduce(
+            (total,item) =>
+            total + item.price * item.qty,
+            0
+        );
+
+
+    window.open(
+        "https://wa.me/919999999999?text=" +
+        message,
+        "_blank"
+    );
+
+}
+
+
+/* ================= START ================= */
+
+renderProducts();
+
+updateCart();
 
 </script>
 
 </body>
 </html>
-```
-
- This is a complete standalone page, so you can replace your truncated file with the code above and open it directly in a browser.
